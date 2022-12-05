@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html th:include="template :: modelo">
+
+<body>
+    <div th:fragment="conteudo">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Proprietário</th>
+                    <th scope="col">Quartos</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Tipo de Ocupação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="apto : ${apartamentos}">
+                    <th scope="row" th:text="${apto.id}"></th>
+                    <td th:text="${apto.proprietario.nome}"></td>
+                    <td th:text="${apto.quantidadeDeQuartos}"></td>
+                    <td th:text="${apto.numeroDoApartamento}"></td>
+                    <td th:text="${apto.tipoDeOcupacao}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

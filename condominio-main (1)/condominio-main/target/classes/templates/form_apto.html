@@ -1,0 +1,35 @@
+<html th:include="template :: modelo">
+    <div th:fragment="conteudo">
+        <form action="/cad_apto" method="post" th:object="${apartamento}">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Quantidade de quartos</label>
+                <input type="text" class="form-control" th:field="*{quantidadeDeQuartos}">
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('quantidadeDeQuartos')}" th:errors="*{quantidadeDeQuartos}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Número do apartamento</label>
+                <input type="text" class="form-control" th:field="*{numeroDoApartamento}">
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('numeroDoApartamento')}" th:errors="*{numeroDoApartamento}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Tipo de ocupação</label>
+                <select class="form-control" th:field="*{tipoDeOcupacao}">
+                <option value="proprietário">Proprietário</option>
+                <option value="inquilino">Inquilino</option>
+                <option value="vazio">Vazio</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="tipo.id" class="form-label">Proprietário</label>
+                <select th:field="*{proprietario.id}" class="form-control">
+                    <option th:each="prop : ${proprietarios}"
+                        th:value="${prop.id}"
+                        th:text="${prop.nome}">
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Gravar</button>
+        </form>
+    </div>
+</html>

@@ -1,0 +1,17 @@
+<html th:include="template :: modelo">
+    <div th:fragment="conteudo">
+        <form action="/cad_prop" method="post" th:object="${proprietario}">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" th:field="*{nome}">
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" th:field="*{telefone}">
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Gravar</button>
+        </form>
+    </div>
+</html>
